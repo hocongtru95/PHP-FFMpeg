@@ -94,10 +94,10 @@ class FFMpeg
             throw new RuntimeException(sprintf('Unable to probe "%s".', $pathfile));
         }
 
-        if (0 < count($streams->videos())) {
-            return new Video($pathfile, $this->driver, $this->ffprobe);
-        } elseif (0 < count($streams->audios())) {
+        if (0 < count($streams->audios())) {
             return new Audio($pathfile, $this->driver, $this->ffprobe);
+        } elseif (0 < count($streams->videos())) {
+            return new Video($pathfile, $this->driver, $this->ffprobe);
         }
 
         throw new InvalidArgumentException('Unable to detect file format, only audio and video supported');
